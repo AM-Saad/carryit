@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <%- include('./includes/styles.ejs') %>
+        <link rel="stylesheet" href="/admin/css/dashboard.css" />
+
+</head>
+
+<body class="opened-menu">
+    <%- include('./includes/side-nav.ejs') %>
+        <div class="wrapper">
+
+            <section class="options">
+
+                <div class="flex f-space-between">
+                    <h2>المحادثات</h2>
+
+                </div>
+            </section>
+            <main class="chat">
+                <input type="hidden" name="s" value="<%=user._id%>" id="s">
+                <div class="users-menu">
+                    <ul>
+                        <% alldrivers.forEach(s=>{ %>
+                            <li class="admin" data-n="<%=s.name%>" data-aid="<%=user._id%>" data-cid="<%=s.chatId%>"
+                                data-did="<%=s._id%>" data-c="<%=user._id%>" >
+                                <h3>
+                                    <%=s.name%>
+                                </h3>
+                                <span class="new-chats-no none"></span>
+                            </li>
+                            <% }) %>
+                    </ul>
+
+                </div>
+                <div class="reports-wrapper">
+                    <div class="chat-box ">
+                        <div class="box-header c-b">
+                            <h3>اختار المندوب</h3>
+                            <small id="typing" class="text-white none">يكتب...</small>
+                        </div>
+                        <div class="chating h-100 none">
+
+
+                            <ul id="messages" class="box-messages">
+
+                            </ul>
+                            <div class="box-footer">
+
+                                <form id="send-group-msg-from" autocomplete="off">
+                                    <button type="submit">ارسل</button>
+                                    <input type="text" class="form-control" id="group-msg" placeholder="اكتب الرساله">
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </main>
+        </div>
+
+        <%- include('./includes/scripts.ejs') %>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+            <script src="/general/js/chat.js"></script>
+
+</body>
+
+</html>

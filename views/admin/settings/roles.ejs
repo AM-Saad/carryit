@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <%- include('../includes/styles.ejs') %>
+        <link rel="stylesheet" href="/admin/css/roles.css" />
+
+</head>
+
+<body>
+    <%- include('../includes/side-nav.ejs') %>
+    <div class="wrapper bg-lightgray">
+        <h1>الادوار</h1>
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+
+
+        <main class="grid g-two">
+            <div class="all-roles">
+                <h2>All Roles</h2>
+                <% roles.forEach(r => { %>
+                <details class="all-roles_role">
+                    <input type="hidden" name="roleName" value="<%=r.name%>">
+                    <summary><b><%=r.name%></b></summary>
+                    <% r.permissions.forEach(p => { %>
+                    <details class="all-roles_role-permission">
+                        <summary><%=p.name%></summary>
+                        <% p.actions.forEach(a => { %>
+                        <b style="display: block;"><%=a%></b>
+                        <!-- <details>
+                            <summary></summary>
+                        </details> -->
+                        <% }); %>
+
+                    </details>
+                    <% }); %>
+                    <span class=" delete-role">Delete</span>
+
+                </details>
+                <% }); %>
+            </div>
+
+            <form action="/create-role" method="POST" class="create-roles">
+                <h2>انشئ دور مخصص</h2>
+
+                <div class="form-group">
+                    <label>اسم الدور</label>
+                    <input type="text" name="roleName" class="form-control" id="roleName"
+                        placeholder="اسم الدور">
+                </div>
+                <div class="form-group role-inputs">
+                    <label>أذونات الدور</label>
+                    <div class="roles">
+                        <div class="form-control role">
+                            <label>الشحنات</label>
+                            <input type="checkbox" class="main-role" data-permission="shipments" id="shipments">
+                            <div class="actions">
+                                <div class="form-control">
+                                    <label>قراءه</label>
+                                    <input type="checkbox" class="premission-action get-shipments"
+                                        data-actionname="get-shipments" data-action="get" id="get">
+                                </div>
+                                <div class="form-control">
+                                    <label>انشاء</label>
+                                    <input type="checkbox" class="premission-action create-shipments"
+                                        data-actionname="create-shipments" data-action="create" id="create">
+                                </div>
+                                <div class="form-control">
+                                    <label>تعديل</label>
+                                    <input type="checkbox" class="premission-action edit-shipments"
+                                        data-actionname="edit-shipments" data-action="edit" id="edit">
+                                </div>
+                                <div class="form-control">
+                                    <label>حذف</label>
+                                    <input type="checkbox" class="premission-action delete-shipments" data-action="delete"
+                                        data-actionname="delete-shipments" id="delete">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-control role">
+                            <label>المخزن</label>
+                            <input type="checkbox" class="main-role" data-permission="inventory">
+                            <div class="actions">
+                                <div class="form-control">
+                                    <label>قراءه</label>
+                                    <input type="checkbox" class="premission-action get-inventory" data-action="get"
+                                        data-actionname="get-inventory">
+                                </div>
+                                <div class="form-control">
+                                    <label>انشاء</label>
+                                    <input type="checkbox" class="premission-action create-inventory"
+                                        data-actionname="create-inventory" data-action="create">
+                                </div>
+                                <div class="form-control">
+                                    <label>تعديل</label>
+                                    <input type="checkbox" class="premission-action edit-inventory"
+                                        data-actionname="edit-inventory" data-action="edit">
+                                </div>
+                                <div class="form-control">
+                                    <label>حذف</label>
+                                    <input type="checkbox" class="premission-action delete-inventory"
+                                        data-actionname="delete-inventory" data-action="delete">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-control role">
+                            <label>الفواتير</label>
+                            <input type="checkbox" class="main-role" data-permission="bills">
+                            <div class="actions">
+                                <div class="form-control">
+                                    <label>قراءه</label>
+                                    <input type="checkbox" class="premission-action get-bills"
+                                        data-actionname="get-bills" data-action="get">
+                                </div>
+                                <div class="form-control">
+                                    <label>انشاء</label>
+                                    <input type="checkbox" class="premission-action create-bills"
+                                        data-actionname="create-bills" data-action="create">
+                                </div>
+                                <div class="form-control">
+                                    <label>تعديل</label>
+                                    <input type="checkbox" class="premission-action edit-bills"
+                                        data-actionname="edit-bills" data-action="edit">
+                                </div>
+                                <div class="form-control">
+                                    <label>حذف</label>
+                                    <input type="checkbox" class="premission-action delete-bills"
+                                        data-actionname="delete-bills" data-action="delete">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-control role">
+                            <label>المناطق</label>
+                            <input type="checkbox" class="main-role" data-permission="zones">
+                            <div class="actions">
+                                <div class="form-control">
+                                    <label>قراءه</label>
+                                    <input type="checkbox" class="premission-action get-zones"
+                                        data-actionname="get-zones" data-action="get">
+                                </div>
+                                <div class="form-control">
+                                    <label>انشاء</label>
+                                    <input type="checkbox" class="premission-action create-zones"
+                                        data-actionname="create-zones" data-action="create">
+                                </div>
+                                <div class="form-control">
+                                    <label>تعديل</label>
+                                    <input type="checkbox" class="premission-action edit-zones"
+                                        data-actionname="edit-zones" data-action="edit">
+                                </div>
+                                <div class="form-control">
+                                    <label>حذف</label>
+                                    <input type="checkbox" class="premission-action delete-zones"
+                                        data-actionname="delete-zones" data-action="delete">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-control role">
+                            <label>العملاء</label>
+                            <input type="checkbox" class="main-role" data-permission="customer">
+                            <div class="actions">
+                                <div class="form-control">
+                                    <label>قراءه</label>
+                                    <input type="checkbox" class="premission-action get-customer"
+                                        data-actionname="get-customer" data-action="get">
+                                </div>
+                                <div class="form-control">
+                                    <label>انشاء</label>
+                                    <input type="checkbox" class="premission-action create-customer"
+                                        data-actionname="create-customer" data-action="create">
+                                </div>
+                                <div class="form-control">
+                                    <label>تعديل</label>
+                                    <input type="checkbox" class="premission-action edit-customer"
+                                        data-actionname="edit-customer" data-action="edit">
+                                </div>
+                                <div class="form-control">
+                                    <label>حذف</label>
+                                    <input type="checkbox" class="premission-action delete-customer"
+                                        data-actionname="delete-customer" data-action="delete">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-control role">
+                            <label>الاسطول</label>
+                            <input type="checkbox" class="main-role" data-permission="fleets">
+                            <div class="actions">
+                                <div class="form-control">
+                                    <label>قراءه</label>
+                                    <input type="checkbox" class="premission-action get-fleets"
+                                        data-actionname="get-fleets" data-action="get">
+                                </div>
+                                <div class="form-control">
+                                    <label>انشاء</label>
+                                    <input type="checkbox" class="premission-action create-fleets"
+                                        data-actionname="create-fleets" data-action="create">
+                                </div>
+                                <div class="form-control">
+                                    <label>تعديل</label>
+                                    <input type="checkbox" class="premission-action edit-fleets"
+                                        data-actionname="edit-fleets" data-action="edit">
+                                </div>
+                                <div class="form-control">
+                                    <label>حذف</label>
+                                    <input type="checkbox" class="premission-action delete-fleets"
+                                        data-actionname="delete-fleets" data-action="delete">
+                                </div>
+                            </div>
+                        </div>
+                      
+                        <div class="form-control role">
+                            <label>المندوبين</label>
+                            <input type="checkbox" class="main-role" data-permission="drivers">
+                            <div class="actions">
+                                <div class="form-control">
+                                    <label>قراءه</label>
+                                    <input type="checkbox" class="premission-action get-drivers"
+                                        data-actionname="get-drivers" data-action="get">
+                                </div>
+                                <div class="form-control">
+                                    <label>انشاء</label>
+                                    <input type="checkbox" class="premission-action create-drivers"
+                                        data-actionname="create-drivers" data-action="create">
+                                </div>
+                                <div class="form-control">
+                                    <label>تعديل</label>
+                                    <input type="checkbox" class="premission-action edit-drivers"
+                                        data-actionname="edit-drivers" data-action="edit">
+                                </div>
+                                <div class="form-control">
+                                    <label>حذف</label>
+                                    <input type="checkbox" class="premission-action delete-drivers"
+                                        data-actionname="delete-drivers" data-action="delete">
+                                </div>
+                            </div>
+                        </div>
+                      
+
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success">انشاء الدور</button>
+            </form>
+        </main>
+
+    </div>
+
+
+    <%- include('../includes/scripts.ejs') %>
+    <script src="/admin/modules/interface/roles.js"> </script>
+</body>
+
+</html>

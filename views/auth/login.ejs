@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <%- include('../includes/style.ejs') %>
+    <link rel="stylesheet" href="/user/css/about.css">
+    <link rel="stylesheet" href="/user/css/auth.css">
+
+
+</head>
+
+<body>
+    <%- include('../includes/nav.ejs') %>
+    <div class="wrapper">
+
+        <main>
+
+            <form class="auth-form" action="/login" method="POST">
+                <h1>تسجيل الدخول</h1>
+                <%- include('../includes/message.ejs') %>
+
+                <div class="auth-form_normal">
+                    <div class="form-control">
+                        <label for="mobile">رقم الموبايل</label>
+                        <input type="number" name="mobile" id="mobile">
+                    </div>
+                    <div class="form-control">
+                        <label for="password">الرقم السري</label>
+                        <input type="password" name="password" id="password">
+                    </div>
+                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                    <button class="btn  hvr-bounce-to-left" type="submit">ادخل</button>
+                    <p style="text-align:center; margin-top: 15px;"><a class="reset" href="/reset">نسيت الرقم السري
+                        </a>
+                        او <a class="reset" href="/signup"> انشئ حساب جديد</a></p>
+                </div>
+
+            </form>
+        </main>
+    </div>
+    <%- include('../includes/footer.ejs') %>
+    <p class="footer-copyright">Designed and developed by <a style="color:#fff;"
+            href="https://amsstudio.me">AMS-Studio</a> </p>
+    <%- include('../includes/scripts.ejs') %>
+
+</body>
+
+</html>

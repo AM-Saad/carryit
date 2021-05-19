@@ -1,0 +1,143 @@
+#menu {
+  position: sticky;
+  top: 0;
+  background: #fff;
+  z-index: 99999;
+  height: 100px;
+  line-height: 100px;
+}
+
+#menu .top {
+  display: flex;
+  align-items: center;
+  height: 30px;
+  background: var(--main-color);
+  padding: var(--m-padding);
+}
+
+#menu .top a {
+  margin: 0 var(--m-margin);
+  color: #fff;
+  text-decoration: none;
+}
+
+#menu ul {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+/* 
+  #menu ul li {
+    border-radius: var(--l-radius);
+    padding: var(--m-padding)
+  } */
+
+#menu ul li a {
+  text-decoration: none;
+  color: #222;
+  font-weight: 800;
+}
+
+.toggle-menu {
+  font-size: 30px;
+  cursor: pointer;
+}
+
+#mobile-menu {
+  display: none;
+  padding: var(--m-padding);
+  position: sticky;
+  height: 65px;
+  top: 0;
+  z-index: 99999;
+  background: #ffffff;
+  box-shadow: var(--shadow3);
+}
+
+#mobile-menu ul {
+  position: absolute;
+  right: -100%;
+  top: 0;
+  height: 100vmax;
+  width: 70%;
+  z-index: 100;
+  background-color: var(--main-color);
+  /* padding: var(--m-padding); */
+  transition: .3s;
+  padding-top: 70px;
+  box-shadow: var(--shadow3);
+}
+
+#mobile-menu ul .toggle-menu {
+  position: absolute;
+  top: 2%;
+  right: 5%;
+  font-size: 20px;
+  cursor: pointer;
+  padding: var(--s-padding);
+}
+
+#mobile-menu ul.active {
+  right: 0;
+}
+
+ul.active::before {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 0, 0, 0.199);
+}
+
+#mobile-menu ul li {
+  /* margin-bottom: var(--s-margin); */
+  padding: var(--m-padding);
+  color: #fff !important;
+  border-bottom: 1px solid;
+  display: block;
+}
+
+#mobile-menu ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bolder;
+  display: block;
+}
+
+#mobile-menu ul li a:visited {
+  color: #fff;
+}
+
+#logo {
+  font-family: 'Merienda', cursive;
+  font-size: 24px;
+  text-shadow: 1px 2px 2px var(--main-color);
+  text-decoration: none;
+  color: #111;
+  height: 100%;
+}
+
+#logo img {
+  max-width: 130px;
+}
+
+@media only screen and (max-width: 768px) {
+  .wrapper {
+    width: 99%;
+  }
+  section {
+    padding: 3px;
+    margin: var(--l-margin) 3px;
+  }
+  #menu {
+    display: none;
+  }
+  #mobile-menu {
+    display: block;
+    padding: var(--s-padding) var(--l-padding);
+  }
+  #logo img {
+    width: 40px;
+  }
+}

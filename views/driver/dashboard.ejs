@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <%- include('../admin/includes/styles.ejs') %>
+        <link rel="stylesheet" href="/admin/css/dashboard.css" />
+</head>
+
+<body class="opened-menu">
+    <%- include('../admin/includes/side-nav.ejs') %>
+        <div class="wrapper ">
+            <div class="orders wrapper-body">
+                <div class="wrapper-body_head">
+                    <div class="left">
+                        <h2>المندوبين</h2>
+                        <h3>لوحه التحكم</h3>
+                    </div>
+                    <div class="right">
+                    </div>
+                </div>
+                <%- include('../includes/message.ejs') %>
+
+                    <section class="over-all-review ">
+                        <div class="new-shippment over-all-review_box">
+                            <div class="flex f-space-between p-medium border-r-m ">
+                                <h3>شحنات لك في المخزن</h3>
+                            </div>
+                            <% if(shipments.length> 0) { %>
+                                <div>
+                                    <% shipments.forEach(s=>{ %>
+                                        <a href="/driver/shipment/<%=s.shipmentNo%>"
+                                            class="flex f-space-between m-medium p-medium font-m border-r-l bg-lightgray">
+                                            <span>
+                                                رقم الشحنه: <%=s.shipmentNo %>
+                                            </span>
+                                            <span>
+                                                <%=s.status.text%>
+                                            </span>
+                                            <span>المبلخ المستحق: <%=s.price %></span>
+                                        </a>
+                                        <% }) %>
+                                </div>
+                                <% } else { %>
+                                    <h5 class="p-3 c-b">لا يوجد الأن</h5>
+                                    <% } %>
+                        </div>
+
+                        <div class="grid g-two shipments ">
+
+                            <div class="new-shippment over-all-review_box">
+                                <div class="flex f-space-between p-medium border-r-m ">
+                                    <h3> للتسليم اليوم</h3>
+                                    <a href="/driver/shipments/" class="btn border-r-l ">المزيد</a>
+                                </div>
+                                <% if(shipedToday.length> 0) { %>
+                                    <div>
+                                        <% shipedToday.forEach(s=>{ %>
+                                            <a href="/driver/shipment/<%=s.shipmentNo%>" data-si="<%=s.shipmentNo%>"
+                                                class=" over-all-review_box_item shipment">
+                                                <span>
+                                                    <%=s.shipmentNo %>
+                                                </span>
+                                                <span class="marked marked-<%=s.status.no%> ">
+                                                    <%=s.status.text %>
+                                                </span>
+                                            </a>
+                                            <% }) %>
+                                    </div>
+                                    <% } else { %>
+                                        <h5 class="p-3 c-b">لا يوجد شحنات يجب تسليمها اليوم</h5>
+                                        <% } %>
+                            </div>
+                            <div class="new-shippment over-all-review_box">
+                                <div class="flex f-space-between p-medium border-r-m ">
+                                    <h3> للاستلام اليوم</h3>
+                                    <a href="/driver/shipments" class="btn border-r-l">المزيد</a>
+                                </div>
+                                <% if(pickedToday.length> 0) { %>
+                                    <div>
+                                        <% pickedToday.forEach(s=>{ %>
+                                            <a href="/driver/shipment/<%=s.shipmentNo%>" data-si="<%=s.shipmentNo%>"
+                                                class=" over-all-review_box_item shipment">
+                                                <span>
+                                                    <%=s.shipmentNo %>
+                                                </span>
+                                                <span class="marked marked-<%=s.status.no%> ">
+                                                    <%=s.status.text %>
+                                                </span>
+                                            </a>
+                                            <% }) %>
+                                    </div>
+                                    <% } else { %>
+                                        <h5 class="p-3 c-b">لا يوجد شحنات يجب استلامها اليوم</h5>
+                                        <% } %>
+                            </div>
+                        </div>
+                    </section>
+
+            </div>
+        </div>
+
+        <%- include('../admin/includes/scripts.ejs') %>
+            <script src="/modules/en/home.js"></script>
+
+</body>
+
+</html>

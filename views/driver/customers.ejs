@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <%- include('../admin/includes/styles.ejs') %>
+
+        <link rel="stylesheet" href="/admin/css/orders.css" />
+
+</head>
+
+<body>
+        <%- include('./includes/side-nav.ejs') %>
+            <div class="wrapper">
+
+                <main id="customers">
+                    <section class="options">
+                        <div class="flex f-space-between">
+                            <h2>العملاء</h2>
+                            <!--Main Actions -->
+                            <aside class="main-actions flex f-space-between">
+                                <input class="form-control" type="text" name="search-name" id="search-name"
+                                    placeholder="ابحث بالاسم">
+                                <!-- <a class="main-actions_action btn bg-w toggle-new-customer">New</a> -->
+                            </aside>
+                        </div>
+                    </section>
+                    <section class="sorting flex p-3 m-3 f-space-between">
+
+                        <div class="flex f-space-around">
+                            <a class="btn btn-small m-3 bar-layout p-medium"><i class="fas fa-bars "></i></a>
+                            <a class="btn btn-small m-3 grid-layout p-medium"><i
+                                    class="fas fa-grip-horizontal "></i></a>
+                        </div>
+
+
+                    </section>
+                    <div class="client-info_basics m-large">
+                        <div class="new-customer-box slideable">
+                            <form action="/create-customer" method="post" class="inside-wrapper">
+                                <div class="form-actions flex f-space-around">
+                                    <h3>New Customer</h3>
+                                    <button type="submit" class="btn btn-success save-customer">Save</button>
+                                </div>
+                                <i class="fas fa-times close toggle-new-customer"></i>
+                                <div class="form-group">
+                                    <label for="customerName">Customer Name <span class="c-r">*</span></label>
+                                    <input type="text" id="customerName" class="form-control" name="newcustomername"
+                                        placeholder="Customer Name..">
+                                </div>
+                                <div class="form-group">
+                                    <label for="customerNumber">Customer Number</label>
+                                    <input type="tel" id="customerNumber" class="form-control" name="newcustomermobile"
+                                        placeholder="Client Mobile..">
+                                </div>
+                                <div class="form-group">
+                                    <label for="customerAddress">Customer Address</label>
+                                    <input type="text" id="customerAddress" class="form-control"
+                                        name="newcustomeraddress" placeholder="Client Address..">
+                                </div>
+                                <div class="form-group">
+                                    <label for="customerEmail">Customer Email</label>
+                                    <input type="email" id="customerEmail" class="form-control" name="newcustomeremail"
+                                        placeholder="Client Email..">
+                                </div>
+                                <div class="form-group">
+                                    <label for="customerImage">Customer Image</label>
+                                    <input type="file" id="customerImage" class="form-control customerImage"
+                                        name="newcustomerimg">
+                                </div>
+                                <div class="form-group">
+                                    <label for="newcustomernotes">Note</label>
+                                    <input type="email" id="newcustomernotes" class="form-control"
+                                        name="newcustomernotes" placeholder="Leave Note....">
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                    <div class="content grid g-three">
+                        <img class="loading block" src="/admin/images/loading(3).svg">
+                    </div>
+
+                    <div class="orders slideable ">
+                        <div class="inside-wrapper p-large">
+
+                            <div class="form-actions">
+                                <i class="fas fa-times close font-xl close-orders"></i>
+
+                                <h4>جميع طلبات العميل </h4>
+                                <div class="flex f-space-between ">
+                                    <input type="number" name="order-serial" class="order-serial form-control"
+                                        placeholder="ابحث برقم الطلب" id="">
+                                    <div>
+                                        <a class="btn btn-small sub-menu_btn">ترتيب</a>
+                                        <ul class="sub-menu">
+                                            <li class="sort-new sort-date">الجديد</li>
+                                            <li class="sort-old sort-date">القديم</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <img src="/admin/images/loading(3).svg" class="loading small block">
+
+                        </div>
+                    </div>
+                    <div class="edit-customer_form slideable"></div>
+                </main>
+
+            </div>
+
+            <%- include('./includes/end.ejs') %>
+                <script src="/admin/modules/components/customer.js"> </script>
+                <script src="/admin/modules/customers.js"> </script>
+</body>
+
+</html>

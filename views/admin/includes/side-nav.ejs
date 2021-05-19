@@ -1,0 +1,100 @@
+<nav>
+    <% if(isAuth && user.isAdmin) { %>
+        <input type="hidden" name="uid" id="uid" value="<%=user._id%>">
+        <ul id="top-menu">
+            <span class="dashboard-menu-icon menu_icons_item"><i class="fas fa-bars"></i></span>
+            <div class="flex">
+                <div class="p-relative">
+                    <i class="fas fa-cogs sub-menu_btn menu_icons_item"></i>
+                    <ul class="sub-menu">
+                        <li> <a href="/admin/settings/account"> حسابي</a> </li>
+                        <li> <a href="/admin/settings/admins"> المشرفين</a> </li>
+                        <li> <a href="/admin/settings/roles"> الادوار</a> </li>
+                        <li> <a href="/logout"> تسجيل الخروج</a> </li>
+                    </ul>
+                </div>
+                <i class="fas fa-bell menu_icons_item"></i>
+
+                <i class="fas fa-download menu_icons_item none  install-btn" id="install-btn"></i>
+            </div>
+        </ul>
+        <ul id="dashboard-menu" class="menu-closed">
+            <div id="dashboard-menu_header">
+                <span class="dashboard-menu-icon menu_icons_item"><i class=" fas fa-bars"></i></span>
+                <div class="logo m-l-3">
+                    <a href="/admin/dashboard"><img src="/user/images/icon.png" alt="" srcset=""></a>
+                </div>
+            </div>
+            <a href="/admin/dashboard"
+                class="dashboard-menu_item <%= path === '/dashboard' ? 'active' : '' %>"><b>الرئيسيه</b></a>
+            <a href="/admin/shipments"
+                class="dashboard-menu_item <%= path === '/shipments' ? 'active' : '' %>"><b>الشحنات</b></a>
+            <a href="/admin/drivers"
+                class="dashboard-menu_item <%= path === '/drivers' ? 'active' : '' %>"><b>السائقين</b></a>
+            <a href="/admin/customers"
+                class="dashboard-menu_item <%= path === '/customers' ? 'active' : '' %>"><b>العملاء</b></a>
+            <a href="/admin/inventory"
+                class="dashboard-menu_item <%= path === '/inventory' ? 'active' : '' %>"><b>المخزن</b></a>
+            <a href="/admin/bills"
+                class="dashboard-menu_item <%= path === '/bills' ? 'active' : '' %>"><b>الفواتير</b></a>
+            <a href="/admin/vehicles"
+                class="dashboard-menu_item <%= path === '/vehicles' ? 'active' : '' %>"><b>الاسطول</b></a>
+            <a href="/admin/zones"
+                class="dashboard-menu_item <%= path === '/zones' ? 'active' : '' %>"><b>المناطق</b></a>
+            <a href="/admin/chat" class="dashboard-menu_item <%= path === '/chat' ? 'active' : '' %>" class="chats"><b
+                    class="p-relative"><span class="new-chats-no none"></span> المحادثات</b></a>
+            <!-- <a href="/admin/reports"
+                class="dashboard-menu_item <%= path === '/reports' ? 'active' : '' %>"><b>التقارير</b> </a> -->
+            <a href="/admin/settings"
+                class="dashboard-menu_item <%= path === '/settings' ? 'active' : '' %>"><b>الاعدادت</b> </a>
+            <a class="dashboard-menu_item" href="/logout"><b>تسجيل خروج</b> <img src="/admin/images/exit.png"
+                    alt=""></a>
+            <div id="dashboard-menu_bottom">
+                <a href="/admin/dashboard">
+                    <%=user.name%>
+                </a>
+            </div>
+        </ul>
+        <%}%>
+
+            <% if(isAuth && user.isDriver) { %>
+                <input type="hidden" name="uid" id="uid" value="<%=user._id%>">
+
+                <ul id="top-menu">
+                    <span class="dashboard-menu-icon menu_icons_item"><i class="fas fa-bars"></i></span>
+                    <div class="flex">
+                        <div class="p-relative">
+                            <i class="fas fa-cogs sub-menu_btn menu_icons_item"></i>
+                            <ul class="sub-menu">
+                                <li> <a href="/admin/settings/account"> حسابي</a> </li>
+                                <li> <a href="/admin/settings/admins"> المشرفين</a> </li>
+                                <li> <a href="/admin/settings/roles"> الادوار</a> </li>
+                                <li> <a href="/logout"> تسجيل الخروج</a> </li>
+                            </ul>
+                        </div>
+                        <i class="fas fa-bell menu_icons_item"></i>
+                        <i class="fas fa-bell menu_icons_item none install-btn" id="install-btn"></i>
+                    </div>
+                </ul>
+                <ul id="dashboard-menu" class="menu-closed">
+                    <div id="dashboard-menu_header">
+                        <span class="dashboard-menu-icon menu_icons_item"><i class=" fas fa-bars"></i></span>
+                        <div class="logo m-l-3">
+                            <a href="/driver/dashboard"><img src="/user/images/icon.png" alt="" srcset=""></a>
+                        </div>
+                    </div>
+                    <!-- <a href="./sales/add"><b>Add Sales</b><i class="far fa-calendar-plus"></i> </a> -->
+                    <!-- <a href="../pos/sessions.ejs"><b>Sessions</b><img src="/admin/images/pos.png" alt="Sales"></a> -->
+                    <a class="dashboard-menu_item" href="/driver/dashboard"><b>الرئيسيه</b></a>
+                    <a class="dashboard-menu_item" href="/driver/shipments"><b>شحناتك</b></a>
+                    <a class="dashboard-menu_item" href="/driver/custody"><b>العهدات</b></a>
+                    <a class="dashboard-menu_item" href="/driver/commissions"><b>العمولات</b></a>
+                    <a class="dashboard-menu_item" href="/driver/chat"><b>الشات</b></a>
+                    <a class="dashboard-menu_item" href="/driver/settings"><b>الاعدادت</b> </a>
+                    <a class="dashboard-menu_item" href="/logout"><b>تسجيل خروج</b> <img src="/admin/images/exit.png"
+                            alt=""></a>
+                </ul>
+                <%}%>
+
+                    <div id="snackbar">لديك رساله جديده <span></span></div>
+</nav>

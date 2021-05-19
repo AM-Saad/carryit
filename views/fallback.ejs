@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <%- include('./includes/style.ejs') %>
+    <style>
+        .error-pages{
+            width: 75%;
+            margin: auto;
+        }
+    </style>
+    <title><%= pageTitle %></title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="error-pages t-align">
+            <h1>   Fall Back</h1>
+            <img src="/images/404.svg" class="w-100 block m-auto" alt="">
+            <button class="btn" onclick="goBack()">ارجع</button>
+
+            <script>
+                function goBack() {
+                    window.history.back();
+                }
+            </script>
+        </div>
+    </div>
+</body>
+
+</html>

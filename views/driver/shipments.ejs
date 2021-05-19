@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <%- include('../admin/includes/styles.ejs') %>
+
+        <link rel="stylesheet" href="/admin/css/dashboard.css" />
+
+</head>
+
+<body class="opened-menu">
+    <%- include('../admin/includes/side-nav.ejs') %>
+    
+        <div class="wrapper ">
+            <div class="orders wrapper-body">
+                <div class="wrapper-body_head">
+                    <div class="left">
+                        <h2>المندوبين</h2>
+                        <h3>تاريخ شحناتك المسلمه </h3>
+                    </div>
+                    <div class="right">
+                    </div>
+                </div>
+                <%- include('../includes/message.ejs') %>
+
+                    <section class="over-all-review ">
+                        <div class="new-shippment ">
+
+                            <% if(shipments.length> 0) { %>
+                                <div>
+                                    <% shipments.forEach(s=>{ %>
+                                        <div href="/driver/shipment/<%=s.shipmentNo%>"
+                                            class="flex f-space-between m-medium p-medium font-m border-r-l bg-lightgray">
+                                            <span>
+                                                رقم الشحنه: <%=s.shipmentNo %>
+                                            </span>
+                                            <span class="c-g">المبلخ المستحق: <%=s.price %></span>
+                                            <span><%=s.status.text%></span>
+                                        </div>
+                                        <% }) %>
+                                </div>
+                                <% } else { %>
+                                    <h5 class="p-3 c-b">لا يوجد الأن</h5>
+                                    <% } %>
+                        </div>
+
+                    </section>
+
+            </div>
+        </div>
+
+        <%- include('../admin/includes/scripts.ejs') %>
+
+            <script src="/modules/en/home.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<%- include('../includes/head.ejs') %>
+<link rel="stylesheet" href="/css/forms.css">
+<link rel="stylesheet" href="/css/auth.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <%- include('../includes/top-bar.ejs') %>
+        <%- include('../includes/navigation.ejs') %>
+
+        <main>
+
+            <% if (errmsg) { %>
+            <div class="user-message user-message-error"> <%= errmsg %> </div>
+            <% } %>
+            <form class="auth-form" action="/verfiy?type=<%=type%>" method="POST">
+                <div class="form-control">
+                    <label for="mobile">رقم الموبايل</label>
+                    <input type="text" name="mobile" id="mobile">
+                </div>
+                <div class="form-control">
+                    <label for="passcode">الرمز السري</label>
+                    <input type="passcode" name="passcode" id="passcode">
+                </div>
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                <button class="btn btn-normal" type="submit">استعاده</button>
+            </form>
+        </main>
+        <%- include('../includes/footer.ejs') %>
+        <%- include('../includes/end.ejs') %>
+    </div>
+
+    </html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <%- include('../includes/styles.ejs') %>
+        <link rel="stylesheet" href="/admin/css/settings.css" />
+
+</head>
+
+<body>
+    <%- include('../includes/side-nav.ejs') %>
+        <div class="wrapper">
+
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+
+            <%- include('../../includes/message.ejs') %>
+
+
+
+                <main>
+                    <form action="/admin/settings/new-admin<%= edit ?'?edit=true' : ''%>" method="post">
+                        <h3><%= edit ? 'تعديل ادمن' : 'انشاء ادمن' %> </h3>
+                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                        <%if(edit){ %>
+                            <input type="hidden" name="id" value="<%= admin._id %>">
+                            <% } %>
+                                <div>
+                                    <label for="name">الاسم</label>
+                                    <input class="form-control" type="text" name="name" id="name"  value="<%= edit ? admin.name : ''%>" required>
+                                </div>
+                                <div>
+                                    <label for="mobile">رقم الموبايل</label>
+                                    <input class="form-control" type="text" name="mobile" id="mobile"
+                                        value="<%= edit ? admin.mobile : ''%>" required>
+                                </div>
+                                <div>
+                                    <label for="role">الدور</label>
+                                    <select class="form-control" name="role" id="role">
+                                        <% company.roles.forEach(r=> { %>
+                                            <option value="<%=r.name%>"> <%=r.name%> </option>
+                                            <%})%>
+                                    </select>
+                                </div>
+                                <%if(!edit){ %>
+                                    <div>
+                                        <label for="password"> رقم المرور</label>
+                                        <input class="form-control" type="password" name="password" id="password"
+                                            required>
+                                    </div>
+                                    <div>
+                                        <label for="confirmPassword">تأكيد رقم المرور</label>
+                                        <input class="form-control" type="password" name="confirmPassword"
+                                            id="confirmPassword" required>
+                                    </div>
+                                    <% } %>
+                                        <button class="btn btn-success" type="submit">
+                                            <%= edit ? 'تعديل' : 'انشاء' %>
+                                        </button>
+                    </form>
+                </main>
+
+        </div>
+
+
+        <%- include('../includes/scripts.ejs') %>
+            <script src="/admin/modules/components/drivers.js"> </script>
+            <script src="/admin/modules/interface/drivers.js"> </script>
+</body>
+
+</html>

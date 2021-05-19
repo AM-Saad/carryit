@@ -1,0 +1,73 @@
+<%- include('./includes/head.ejs') %>
+</head>
+
+<body>
+    <%- include('./includes/dashboard-nav.ejs') %>
+    <div class="wrapper">
+        <h1><%= pageTitle%></h1>
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+
+        <%- include('../includes/message.ejs') %>
+        <main>
+            <form action="/admin/settings/info" method="post">
+                <h3>Change Info</h3>
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+
+                <div class="form-control">
+                    <label for="mobile">Mobile</label>
+                    <input type="text" name="mobile" id="mobile" value="<%=user.mobile %>" required>
+                </div>
+                <div class="form-control">
+                    <label for="name">Name</label>
+                    <input type="text" name="name" id="name" value="<%=user.name %>" required>
+                </div>
+
+                <button class="btn btn-success">Update</button>
+            </form>
+            <form action="/admin/settings/password" method="post">
+                <h3>Change Password</h3>
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+
+                <div class="form-control">
+                    <label for="oldPassword">Old Password</label>
+                    <input type="password" name="oldPassword" id="oldPassword" required>
+                </div>
+                <div class="form-control">
+                    <label for="newPassword">New Password</label>
+                    <input type="password" name="newPassword" id="newPassword" required>
+                </div>
+                <div class="form-control">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" name="confirmPassword" id="confirmPassword" required>
+                </div>
+                <button class="btn btn-success" type="submit">Change</button>
+            </form>
+            <form action="/admin/settings/new-admin" method="post">
+                <h3>Create New Admin</h3>
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+
+                <div class="form-control">
+                    <label for="name">Name</label>
+                    <input type="text" name="name" id="name" required>
+                </div>
+                <div class="form-control">
+                    <label for="mobile">Mobile</label>
+                    <input type="text" name="mobile" id="mobile" required>
+                </div>
+                <div class="form-control">
+                    <label for="password"> Password</label>
+                    <input type="password" name="password" id="password" required>
+                </div>
+                <div class="form-control">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" name="confirmPassword" id="confirmPassword" required>
+                </div>
+                <button class="btn btn-success" type="submit">Change</button>
+            </form>
+        </main>
+        <%- include('./includes/admin-scripts.ejs') %>
+
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <%- include('../includes/dashboard_style.ejs') %>
+    <link rel="stylesheet" href="/user/css/setting.css">
+    <link rel="stylesheet" href="/user/css/shipments.css">
+    <link rel="stylesheet" href="/user/css/neworder.css">
+
+
+</head>
+
+<body class="opened-menu">
+    <%- include('../includes/top-menu.ejs') %>
+    <%- include('../includes/dashboard-menu.ejs') %>
+    <div class="wrapper">
+
+        <div class="wrapper-body">
+            <%- include('../includes/message.ejs') %>
+
+            <div class="wrapper-body_head">
+                <div class="left">
+                    <h2>حسابي</h2>
+                    <h3>الاعدادت</h3>
+                </div>
+                <div class="right">
+                </div>
+            </div>
+            <form action="/user/settings/info" method="post">
+                <h3>تغير البيانات</h3>
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+
+                <div class="form-control">
+                    <label for="mobile">الموبايل</label>
+                    <input type="text" name="mobile" id="mobile" value="<%=user.mobile %>" required>
+                </div>
+                <div class="form-control">
+                    <label for="name">الاسم</label>
+                    <input type="text" name="name" id="name" value="<%=user.name %>" required>
+                </div>
+
+                <button class="btn btn-success">تعديل</button>
+            </form>
+            <form action="/user/settings/password" method="post">
+                <h3>تغيير رقم المرور</h3>
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+
+                <div class="form-control">
+                    <label for="oldPassword">رقم المرور القديم</label>
+                    <input type="password" name="oldPassword" id="oldPassword" required>
+                </div>
+                <div class="form-control">
+                    <label for="newPassword">رقم المرور الجديد</label>
+                    <input type="password" name="newPassword" id="newPassword" required>
+                </div>
+                <div class="form-control">
+                    <label for="confirmPassword">تأكيد رقم المرور الجديد</label>
+                    <input type="password" name="confirmPassword" id="confirmPassword" required>
+                </div>
+                <button class="btn btn-success" type="submit">تغيير</button>
+            </form>
+
+        </div>
+
+    </div>
+    <p class="footer-copyright">Designed and developed by <a style="color:#fff;"
+            href="https://amsstudio.me">AMS-Studio</a> </p>
+    <%- include('../includes/scripts.ejs') %>
+</body>
+
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <%- include('./includes/styles.ejs') %>
+        <link rel="stylesheet" href="/admin/css/dashboard.css" />
+
+</head>
+
+<body class="opened-menu">
+    <%- include('./includes/side-nav.ejs') %>
+
+        <div class="wrapper ">
+            <div class="orders wrapper-body">
+                <div class="wrapper-body_head">
+                    <div class="left">
+                        <h2>الاداره</h2>
+                        <h3>لوحه التحكم</h3>
+                    </div>
+                    <div class="right">
+                    </div>
+                </div>
+                <section class="overall-info ">
+                    <div class="overall-info_item gradient-blue">
+                        <p> Avg sales value</p>
+                        <b>
+                            <%=totalSalesPrice%>
+                        </b>
+                    </div>
+                    <div class="overall-info_item gradient-green">
+                        <p>العملاء</p>
+                        <b>
+                            <%=customerslenght%>
+                        </b>
+                    </div>
+                    <div class="overall-info_item gradient-yellow">
+                        <p>عدد الشحنات</p>
+                        <b>
+                            <%=salesNumber%>
+                        </b>
+                    </div>
+                </section>
+                <section class="over-all-review ">
+                    <div class="infograph p-relative">
+                        <div class="p-3 flex">
+                        </div>
+                        <img src="/admin/images/loading(3).svg" alt="" class="loading ">
+                        <div class="charts  over-all-review_box  grid g-two">
+
+                            <div class="chart none">
+                                <canvas id="compareTwoMonthessales"></canvas>
+                            </div>
+                            <div class="chart none">
+                                <canvas id="compareTwoMonthessalesreveneu"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid g-two shipments ">
+
+                        <div class="new-shippment over-all-review_box">
+                            <div class="flex f-space-between p-medium border-r-m ">
+                                <h3> للتسليم اليوم</h3>
+                                <a href="/admin/shipments/" class="btn border-r-l ">المزيد</a>
+                            </div>
+                            <% if(shipedToday.length> 0) { %>
+                                <div>
+                                    <% shipedToday.forEach(s=>{ %>
+                                        <a href="/admin/shipments" data-si="<%=s.shipmentNo%>"
+                                            class=" over-all-review_box_item shipment">
+                                            <span>
+                                                <%=s.shipmentNo %>
+                                            </span>
+                                            <span class="marked marked-<%=s.status.no%> ">
+                                                <%=s.status.text %>
+                                            </span>
+                                        </a>
+                                        <% }) %>
+                                </div>
+                                <% } else { %>
+                                    <h5 class="p-3 c-b">لا يوجد شحنات يجب تسليمها اليوم</h5>
+                                    <% } %>
+                        </div>
+                        <div class="new-shippment over-all-review_box">
+                            <div class="flex f-space-between p-medium border-r-m ">
+                                <h3> للاستلام اليوم</h3>
+                                <a href="/admin/shipments" class="btn border-r-l">المزيد</a>
+                            </div>
+                            <% if(pickedToday.length> 0) { %>
+                                <div>
+                                    <% pickedToday.forEach(s=>{ %>
+                                        <a href="/admin/shipments" data-si="<%=s.shipmentNo%>"
+                                            class=" over-all-review_box_item shipment">
+                                            <span>
+                                                <%=s.shipmentNo %>
+                                            </span>
+                                            <span class="marked">$<%=s.status.text %></span>
+                                        </a>
+                                        <% }) %>
+                                </div>
+                                <% } else { %>
+                                    <h5 class="p-3 c-b">لا يوجد شحنات يجب استلامها اليوم</h5>
+                                    <% } %>
+                        </div>
+                    </div>
+
+
+                    <div class="new-customers over-all-review_box">
+                        <div class="flex f-space-between p-3">
+                            <h3>New Customers</h3>
+                            <a href="/admin/customers/" class="btn border-r-l">See all</a>
+                        </div>
+                        <% if(customers.length> 0) { %>
+                            <div>
+                                <% customers.forEach(c=>{ %>
+                                    <a href="/admin/customers" class="over-all-review_box_item customer" data-ci="<%=c._id%>">
+                                        <span>
+                                            <%=c.name %>
+                                        </span>
+                                        <span>
+                                            <%=c.mobile %>
+                                        </span>
+                                    </a>
+                                    <% }) %>
+                            </div>
+                            <% } else { %>
+                                <h5 class="p-3 c-b">No Result To Display</h5>
+                                <% } %>
+                    </div>
+
+
+                </section>
+
+            </div>
+        </div>
+
+        <%- include('./includes/scripts.ejs') %>
+
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.js"></script>
+            <script src="/admin/modules/interface/home.js"></script>
+            <script src="/admin/modules/interface/dashboard.js"></script>
+
+</body>
+
+</html>

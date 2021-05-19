@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <%- include('./includes/styles.ejs') %>
+        <link rel="stylesheet" href="/admin/css/driver.css" />
+
+</head>
+
+<body>
+    <%- include('./includes/side-nav.ejs') %>
+        <div class="wrapper">
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+
+            <main id="zones">
+                <section class="head">
+                    <div class="flex f-space-between">
+                        <h2>المناطق</h2>
+                        <!--Main Actions -->
+                        <aside class="flex f-space-between">
+
+                            <a class="btn bg-w toggle-new-zone">منطقه جديد</a>
+                        </aside>
+                    </div>
+                </section>
+                <section class="search flex ">
+                    <input class="form-control" type="text" name="search-name" id="search-name"
+                        placeholder="ابحث بالاسم او الرقم">
+
+                </section>
+
+
+                <div class="client-info_basics m-large">
+                    <div class="new-zone-box slideable">
+                        <form action="/create-zone" method="post" class="inside-wrapper">
+                            <div class="form-actions flex f-space-around">
+                                <h3>منطقه جديد</h3>
+                                <button type="submit" class="btn btn-success save-zone">حفظ</button>
+                            </div>
+                            <i class="fas fa-times close toggle-new-zone"></i>
+                            <div class="form-group">
+                                <label for="zoneName">اسم المنطقه <span class="c-r">*</span></label>
+                                <input type="text" id="zoneName" class="form-control" name="newzonename"
+                                    placeholder="اسم المنطقه">
+                            </div>
+                            <div class="form-group">
+                                <label for="zoneId">رقم المنطقه <span class="c-r">*</span></label>
+                                <input type="number" id="zoneId" class="form-control" name="newzoneId"
+                                    placeholder="رقم المنطقه">
+                            </div>
+                            <div class="form-group">
+                                <label for="zoneshipping">سعر الشحن <span class="c-r">*</span></label>
+                                <input type="tel" id="zoneshipping" class="form-control" name="newzoneshipping"
+                                    placeholder="سعر الشحن للمنطقه">
+                            </div>
+                            <div class="form-group">
+                                <label for="pickup">استلام</label>
+                                <input type="checkbox" id="pickup" class="form-control" name="newpickup" />
+                            </div>
+                            <div class="form-group">
+                                <label for="delivery">تسليم</label>
+                                <input type="checkbox" id="delivery" class="form-control" name="newdelivery" />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="governorate">المحافظه <span class="c-r">*</span></label>
+                                <select class="form-control" id="governorate" name="governorate" id="governorate">
+                                    <option selected="selected">الغربية</option>
+                                    <option value="الإسكندرية">الإسكندرية</option>
+                                    <option value="الإسماعيلية">الإسماعيلية</option>
+                                    <option value="كفر الشيخ">كفر الشيخ</option>
+                                    <option value="أسوان">أسوان</option>
+                                    <option class="أسيوط">أسيوط</option>
+                                    <option class="الأقصر">الأقصر</option>
+                                    <option class="الوادي الجديد">الوادي الجديد</option>
+                                    <option value="شمال سيناء">شمال سيناء</option>
+                                    <option value="البحيرة">البحيرة</option>
+                                    <option value="بني سويف">بني سويف</option>
+                                    <option value="بورسعيد">بورسعيد</option>
+                                    <option value="البحر الأحمر">البحر الأحمر</option>
+                                    <option value="الجيزة">الجيزة</option>
+                                    <option value="الدقهلية">الدقهلية</option>
+                                    <option value="جنوب سيناء">جنوب سيناء</option>
+                                    <option value="دمياط">دمياط</option>
+                                    <option value="سوهاج">سوهاج</option>
+                                    <option value="السويس">السويس</option>
+                                    <option value="الشرقية">الشرقية</option>
+                                    <option value="الغربية">الغربية</option>
+                                    <option value="الفيوم">الفيوم</option>
+                                    <option value="القاهرة">القاهرة</option>
+                                    <option value="القليوبية">القليوبية</option>
+                                    <option value="قنا">قنا</option>
+                                    <option value="مطروح">مطروح</option>
+                                    <option value="المنوفية">المنوفية</option>
+                                    <option value="المنيا">المنيا</option>
+
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="newzoneotes">ملحوظه</label>
+                                <input type="email" id="newzoneotes" class="form-control" name="newzoneotes"
+                                    placeholder="ملحوظه">
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+
+                <div class="content  g-three">
+                    <div class="options">
+                        <a href="" class="btn btn-small create-excel">Export <i class="fas fa-file-excel"></i></a>
+                        <div class="p-relative">
+                            <a class="btn btn-small sub-menu_btn">ترتيب</a>
+                            <ul class="sub-menu">
+                                <li class="sort" data-filter="shipmentslength" data-sku="الاحدث" data-val="high">الاكتر شحنات</li>
+                                <li class="sort" data-filter="shipmentslength" data-sku="الاقدم" data-val="low">الاقل شحنات</li>
+                                <li class="sort" data-filter="price" data-sku="الاعلي" data-val="high">الاغلي شحن</li>
+                                <li class="sort" data-filter="price" data-sku="الاقل" data-val="low">الاقل شحن </li>
+                            </ul>
+                        </div>
+                        <a class="btn btn-small m-3 bar-layout p-medium"><i class="fas fa-bars "></i></a>
+                        <a class="btn btn-small m-3 grid-layout p-medium"><i class="fas fa-grip-horizontal "></i></a>
+                    </div>
+                    <div class="content-desc">
+                        <span>اسم المنطقه</span>
+                        <span>رقم المنطقه</span>
+                        <span>سعر الشحن</span>
+                    </div>
+                    <div class="items"></div>
+                    <img class="loading none" src="/admin/images/loading(3).svg">
+                </div>
+
+
+                <div class="pop-up_container none" data-form="assignShipment" id="create_form">
+                    <div class="pop-up_container_form">
+                        <i class="fas fa-times close close-form"></i>
+                        <form class="assign-shipment">
+                            <div class="form-group">
+                                <label for="name">رقم الشحنه</label>
+                                <input type="text" name="name" id="shipmentNo" placeholder="ادخل رقم الشحنه " required>
+                            </div>
+                            <div class="flex f-end">
+                                <button type="submit" class="btn btn-success m-3">تعين</button>
+                                <a class="btn btn-danger close-form m-3">اغلاق</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </main>
+
+        </div>
+
+
+        <%- include('./includes/scripts.ejs') %>
+            <script src="/admin/modules/components/zones.js"> </script>
+            <script src="/admin/modules/interface/zones.js"> </script>
+</body>
+
+</html>

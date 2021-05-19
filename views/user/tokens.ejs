@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <%- include('../includes/dashboard_style.ejs') %>
+    <link rel="stylesheet" href="/user/css/tokens.css">
+    <script>
+        window.history.pushState("", "", window.location.pathname);
+    </script>
+
+</head>
+
+<body class="opened-menu">
+    <%- include('../includes/top-menu.ejs') %>
+    <%- include('../includes/dashboard-menu.ejs') %>
+    <div class="wrapper">
+
+        <%- include('../includes/message.ejs') %>
+        <div class="wrapper-body">
+
+            <div class="wrapper-body_head">
+                <div class="left">
+                    <h2>حسابي</h2>
+                    <h3>الرموز</h3>
+                </div>
+                <div class="right">
+                    <button id="open-form" class="bg-main btn open-form"> رمز جديد</button>
+                </div>
+            </div>
+            <div class="tokens">
+                <%if (newtoken) { %>
+                <div class="token save-token flex">
+                    <span class="token-name"><%= newtoken.name %></span>
+                    <input type="text" readonly name="tokenVal" value="<%=newtoken.token%>" id="tokenVal">
+                    <button data-link="<%=newtoken.token%>" class="btn copylink">
+                        <span class="tooltiptext">انسخ </span> <i class="fas fa-paste"></i>
+                        <span class="done none">تم النسخ</span>
+                    </button>
+                </div>
+                <% } %>
+                <%if (tokens.length > 0) { %>
+                <% for(token of tokens) { %>
+                <div class="token">
+                    <div>
+                        <h3><%=token.name%></h3>
+                        <%if (token.used > 0) { %>
+                        <h5><%=token.used%></h5>
+                        <% } %>
+                        <%if (token.used === 0) { %>
+                        <h5>لم يستخدم</h5>
+                        <% } %>
+
+                    </div>
+                    <a href="/user/tokens/delete/<%=token._id%>" class="btn btn-danger">Delete</a>
+                </div>
+                <% } %>
+                <%} else { %>
+                <p class="no-result">No Tokens Yet! </p>
+                <button class="btn  create-form">New Token</button>
+                <% } %>
+            </div>
+            <div class="pop-up_container none" id="create_form">
+
+                <div class="pop-up_container_form">
+                    <i class="fas fa-times close close-form"></i>
+                    <form action="/user/tokens" method="POST">
+                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                        <div class="form-control">
+                            <label for="name">اسم الرمز</label>
+                            <input type="text" name="name" id="name" placeholder="ادخل اسم للرمز" required>
+                        </div>
+                        <div class="flex f-end">
+                            <button type="submit" class="btn btn-success m-3">حفظ</button>
+                            <a class="btn btn-danger close-form m-3">اغلاق</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+
+            <!-- <%- include('../includes/footer.ejs') %> -->
+
+        </div>
+    </div>
+    <p class="footer-copyright">Designed and developed by <a style="color:#fff;"
+            href="https://amsstudio.me">AMS-Studio</a> </p>
+
+    <%- include('../includes/scripts.ejs') %>
+
+
+</body>
+
+</html>

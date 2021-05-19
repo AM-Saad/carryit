@@ -1,0 +1,7 @@
+{
+  "env": {
+        "MONGO_USER":"abdelrhman",
+        "MONGO_PASSWORD":"ingodwetrust",
+        "MONGO_DEFUALT_DATABASE":"ecommerceapp",
+        "NODE_ENV": "production"  }
+}

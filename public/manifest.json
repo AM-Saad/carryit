@@ -1,0 +1,48 @@
+{
+    "name": "Carry It",
+    "short_name": "Carry It",
+    "start_url": "/",
+    "scope": ".",
+    "display": "standalone",
+    "background_color": "#fff",
+    "theme_color": "#2ea6c1",
+    "orientation": "portrait-primary",
+    "icons": [
+        {
+            "src": "/admin/images/icons/192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "maskable any"
+        },
+        {
+            "src": "/admin/images/icons/512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        },
+        {
+            "src": "/admin/images/icons/384.png",
+            "sizes": "384x384",
+            "type": "image/png"
+        },
+        {
+            "src": "/admin/images/icons/256.png",
+            "sizes": "256x256",
+            "type": "image/png"
+        },
+        {
+            "src": "/admin/images/icons/144.png",
+            "sizes": "144x144",
+            "type": "image/png"
+        },
+        {
+            "src": "/admin/images/icons/96.png",
+            "sizes": "96x96",
+            "type": "image/png"
+        },
+        {
+            "src": "/admin/images/icons/48.png",
+            "sizes": "48x48",
+            "type": "image/png"
+        }
+    ]
+}

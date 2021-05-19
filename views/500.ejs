@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title><%= pageTitle %></title>
+    <style>
+        .error-pages {
+
+            max-width: 100%;
+            max-height: 70vh;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="error-pages">
+            <h1>500</h1>
+            <p>Error Occurred! <br> Were Sorry But Something Went Wrong And We're Working On It, Please Try Agin Later
+                :(
+            </p>
+            <img src="/images/500.svg" alt="">
+            <button class="btn" onclick="goBack()">Go Back</button>
+
+            <script>
+                function goBack() {
+                    window.history.back();
+                }
+            </script>
+        </div>
+    </div>
+</body>
+
+</html>

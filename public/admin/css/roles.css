@@ -1,0 +1,47 @@
+main{
+    min-height: 100vh;
+    padding: var(--scnd-padding);
+}
+.all-roles{
+    padding: var(--m-padding);
+}
+.all-roles_role{
+    padding: var(--m-padding);
+    background-color: #fff;
+    box-shadow: var(--shadow);
+    border-radius: 1px;
+    margin: 9px;
+}
+.all-roles_role-permission{
+    padding: 3px 10px;
+    background-color: #f9f9f9;
+    margin: var(--m-margin);
+}
+.all-roles_role-permission b{
+    background-color: #f9f9f9;
+    padding: 2px;
+    margin: 2px;
+}
+.form-control{
+    min-height: 50px;
+    
+    margin: 8px 0;
+    height: auto;
+}
+
+
+.create-roles{
+    padding: var(--scnd-padding);
+    background-color: #fff;
+}
+.actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 8px;
+    padding: var(--scnd-padding);
+    text-align: center;
+}
+.external-box{
+    max-height: 400px;
+    overflow: scroll;
+}

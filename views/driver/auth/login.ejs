@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <%- include('../../admin/includes/styles.ejs') %>
+        <link rel="stylesheet" href="/admin/css/auth.css" />
+
+</head>
+
+
+<body>
+        <div class="">
+            <main>
+
+                <form action="/driver/login" class="auth-form" id="login" method="POST">
+                    <%- include('../../includes/message.ejs') %>
+
+                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+
+                        <div class="auth-form_inputs">
+                            <h1>تسجيل الدخول</h1>
+                            <p>الدخول لحساب المنودبين</p>
+                            <div class="form-group">
+                                <label for="mobile">رقم الموبايل</label>
+                                <input class="form-control" type="mobile" name="mobile" id="mobile">
+                            </div>
+                            <div class="form-group">
+                                <label for="password">رقم المرور</label>
+                                <input class="form-control" type="password" name="password" id="password">
+                            </div>
+
+                            <button style="position: relative;" class="btn btn-success" type="submit">Login
+                                <img class="loading loading-small none" src="/admin/images/loading(3).svg" alt="" srcset="">
+                            </button>
+                        </div>
+
+                </form>
+            </main>
+            <!-- <%- include('../includes/footer.ejs') %> -->
+
+        </div>
+        <%- include('../includes/scripts.ejs') %>
+            <!-- <script src="/admin/modules/js/main.js"></script> -->
+            <script src="/admin/modules/auth.js"></script>
+
+</body>
+
+</html>

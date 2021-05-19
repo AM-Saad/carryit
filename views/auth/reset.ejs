@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <%- include('../includes/style.ejs') %>
+    <link rel="stylesheet" href="/css/about.css">
+    <link rel="stylesheet" href="/css/auth.css">
+
+
+</head>
+
+<body>
+    <%- include('../includes/nav.ejs') %>
+    <div class="wrapper">
+
+        <main>
+
+            <form class="auth-form" action="/reset" method="POST">
+                <h1>استرجاع رقم المرور </h1>
+                <p>برجاء ادخال رقم الموبايل </h2>
+
+                    <%- include('../includes/message.ejs') %>
+                    <div class="auth-form_normal">
+
+                        <div class="form-control">
+                            <label for="mobile">رقم الموبايل</label>
+                            <input type="mobile" name="mobile" id="mobile">
+                        </div>
+                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                        <button class="btn btn-normal" type="submit">استرجع</button>
+                    </div>
+            </form>
+        </main>
+    </div>
+    <%- include('../includes/footer.ejs') %>
+    <p class="footer-copyright">Designed and developed by <a style="color:#fff;"
+            href="https://amsstudio.me">AMS-Studio</a> </p>
+    <%- include('../includes/scripts.ejs') %>
+
+</body>
+
+</html>

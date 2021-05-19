@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <%- include('./includes/styles.ejs') %>
+        <link rel="stylesheet" href="/admin/css/dashboard.css" />
+
+</head>
+
+<body>
+    <%- include('./includes/side-nav.ejs') %>
+        <div class="wrapper">
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+
+            <main id="customers">
+                <section class="head">
+                    <div class="flex f-space-between">
+                        <h2>العملاء</h2>
+                        <!--Main Actions -->
+                        <aside class="flex f-space-between">
+
+                            <a class="btn bg-w toggle-new-customer">عميل جديد</a>
+                        </aside>
+                    </div>
+                </section>
+                <section class="search flex options">
+                    <input class="form-control" type="text" name="search-name" id="search-name"
+                        placeholder="ابحث بالاسم">
+                </section>
+
+                <div class="client-info_basics m-large">
+                    <div class="new-customer-box slideable">
+                        <form action="/create-customer" method="post" class="inside-wrapper">
+                            <div class="form-actions flex f-space-around">
+                                <h3>عميل جديد</h3>
+                                <button type="submit" class="btn btn-success save-customer">حفظ</button>
+                            </div>
+                            <i class="fas fa-times close toggle-new-customer"></i>
+                            <div class="form-group">
+                                <label for="customerName">اسم العميل <span class="c-r">*</span></label>
+                                <input type="text" id="customerName" class="form-control" name="newcustomername"
+                                    placeholder="customer Name..">
+                            </div>
+                            <div class="form-group">
+                                <label for="customerNumber">رقم العميل</label>
+                                <input type="tel" id="customerNumber" class="form-control" name="newcustomermobile"
+                                    placeholder="Client Mobile..">
+                            </div>
+                            <div class="form-group">
+                                <label for="customerAddress">عنوان العميل</label>
+                                <input type="text" id="customerAddress" class="form-control" name="newcustomeraddress"
+                                    placeholder="Client Address..">
+                            </div>
+                            <div class="form-group">
+                                <label for="customerEmail">البريد الالكتروني</label>
+                                <input type="email" id="customerEmail" class="form-control" name="newcustomeremail"
+                                    placeholder="Client Email..">
+                            </div>
+                            <div class="form-group">
+                                <label for="customerImage">صوره العميل</label>
+                                <input type="file" id="customerImage" class="form-control customerImage"
+                                    name="newcustomerimg">
+                            </div>
+                            <div class="form-group">
+                                <label for="newcustomernotes">ملحوظه</label>
+                                <input type="email" id="newcustomernotes" class="form-control" name="newcustomernotes"
+                                    placeholder="Leave Note....">
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+
+                <div class="content  g-three">
+
+                    <div class="options">
+                        <a href="" class="btn btn-small create-excel">Export <i class="fas fa-file-excel"></i></a>
+                        <div>
+                            <a class="btn btn-small sub-menu_btn sort-menu_btn p-relative">
+                                <i class=" fas fa-filter"></i>
+                                Filter
+                                <ul class="sub-menu">
+                                    <li class="btn bg-w sort heigest">Heigest</li>
+                                    <li class="btn bg-w sort">Lowest</li>
+                                </ul>
+                            </a>
+                        </div>
+                        <a class="btn btn-small m-3 bar-layout p-medium"><i class="fas fa-bars "></i></a>
+                        <a class="btn btn-small m-3 grid-layout p-medium"><i class="fas fa-grip-horizontal "></i></a>
+                    </div>
+                    <div class="content-desc">
+                        <span>الاسم</span>
+                        <span>الرقم</span>
+                        <span>عدد الشحنات</span>
+                    </div>
+                    <div class="items"></div>
+                    <img class="loading none" src="/admin/images/loading(3).svg">
+                </div>
+
+
+                <div class="pop-up_container none" id="create_form">
+                    <div class="pop-up_container_form">
+                        <i class="fas fa-times close close-form"></i>
+                        <form class="assign-shipment">
+                            <div class="form-group">
+                                <label for="name">رقم الشحنه</label>
+                                <input type="text" name="name" id="shipmentNo" placeholder="ادخل رقم الشحنه " required>
+                            </div>
+                            <div class="flex f-end">
+                                <button type="submit" class="btn btn-success m-3">تعين</button>
+                                <a class="btn btn-danger close-form m-3">اغلاق</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="customer-shipments_sheet slideable ">
+                    <div class="inside-wrapper p-large">
+
+                        <div class="form-actions">
+                            <i class="fas fa-times close font-xl close-shipments"></i>
+
+                            <h4>جميع شحنات العميل </h4>
+                            <div class="flex f-space-between ">
+                                <input type="number" name="order-serial" class="order-serial form-control"
+                                    placeholder="ابحث برقم الطلب" id="">
+                                <div>
+                                    <a class="btn btn-small sub-menu_btn">ترتيب</a>
+                                    <ul class="sub-menu">
+                                        <li class="sort-new sort-date">الجديد</li>
+                                        <li class="sort-old sort-date">القديم</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <img src="/admin/images/loading(3).svg" class="loading small none">
+
+                    </div>
+                </div>
+            </main>
+
+        </div>
+
+
+        <%- include('./includes/scripts.ejs') %>
+            <script src="/admin/modules/components/customers.js"> </script>
+            <script src="/admin/modules/interface/customers.js"> </script>
+</body>
+
+</html>

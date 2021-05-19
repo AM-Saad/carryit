@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <%- include('../includes/style.ejs') %>
+    <link rel="stylesheet" href="/user/css/about.css">
+    <link rel="stylesheet" href="/user/css/auth.css">
+    <style>
+
+    </style>
+
+</head>
+
+<body>
+    <%- include('../includes/nav.ejs') %>
+    <div class="wrapper">
+
+        <main class="grid g-two m-medium p-medium">
+
+            <%- include('../includes/message.ejs') %>
+
+            <form class="auth-form" action="/signup" method="POST">
+                <h1>حساب جديد</h1>
+
+                <div class="auth-form_normal">
+                    <div class="form-control">
+                        <label for="name">الاسم</label>
+                        <input type="text" name="name" id="name">
+                    </div>
+                    <div class="form-control">
+                        <label for="UserName">اسم الشركه</label>
+                        <input type="text" name="UserName" id="UserName">
+                    </div>
+                    <div class="form-control">
+                        <label for="mobile">رقم الموبايل</label>
+                        <input type="text" name="mobile" id="mobile">
+                    </div>
+                    <div class="form-control">
+                        <label for="password">كلمه المرور</label>
+                        <input type="password" name="password" id="password">
+                    </div>
+                    <div class="form-control">
+                        <label for="confirmPassword"> اعاده كلمه المرور</label>
+                        <input type="password" name="confirmPassword" id="confirmPassword">
+                    </div>
+                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                    <button class="btn hvr-bounce-to-left" type="submit">سجل الأن</button>
+                    <p>بلفعل لديك حساب <a class="reset" href="/login"> تسجيل الدخول</a></p>
+                </div>
+
+            </form>
+            <img class="w-75 m-auto" src="/user/images/door.svg" alt="">
+
+        </main>
+    </div>
+    <%- include('../includes/footer.ejs') %>
+    <p class="footer-copyright">Designed and developed by <a style="color:#fff;"
+            href="https://amsstudio.me">AMS-Studio</a> </p>
+
+    <%- include('../includes/scripts.ejs') %>
+
+</body>
+
+</html>

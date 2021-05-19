@@ -1,0 +1,37 @@
+h1 {
+    margin: 0 !important;
+}
+
+.order-boxs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: var(--s-margin);
+}
+
+.order-box {
+    padding: var(--m-padding);
+    box-shadow: var(--shadow);
+    margin: var(--s-margin) 0;
+}
+
+h2 {
+    text-align: right;
+    margin: var(--m-margin) 0;
+    font-size: 25px;
+}
+
+.order-box p {
+    font-size: 18px;
+    margin-bottom: var(--l-margin);
+    text-align: right;
+    border-bottom: 1px solid #ccc;
+    padding: 5px;
+    color: #444;
+}
+
+
+@media only screen and (max-width: 765px) {
+    .order-boxs{
+        grid-template-columns: 1fr;
+    }
+  }

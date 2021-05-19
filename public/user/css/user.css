@@ -1,0 +1,124 @@
+.wrapper {
+  width: 100%;
+  height: auto;
+  margin: 70px auto 60px 0px;
+  padding-right: 10px;
+  overflow: hidden;
+  /* float: right; */
+  transition: .2s all ease-in-out;
+  background-color: #f9fbfd;
+}
+input:-internal-autofill-selected {
+  background-color: #fff;
+}
+.opened-menu .wrapper {
+  width: calc(100% - 260px);
+}
+
+.navigator {
+  margin: var(--m-margin) 0;
+}
+
+.navigator a {
+  margin: 0 var(--m-margin);
+  text-decoration: none;
+  color: var(--main-color);
+}
+
+.wrapper-body {
+  padding: 1.5rem 2rem 5rem 2rem;
+  min-height: 80vh;
+  overflow-x: hidden;
+  width: 75%;
+  margin: auto;
+}
+
+.wrapper-body_head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.wrapper-body_head h2 {
+  font-size: 15px;
+  color: #888;
+}
+
+.wrapper-body_head h3 {
+  font-size: 25px;
+  color: #444;
+}
+
+.pop-up_container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.55);
+  overflow: hidden;
+  padding: 1rem;
+  z-index: 20;
+}
+
+.pop-up_container_form {
+  width: 520px;
+  max-width: 100%;
+  background: #fff;
+  text-align: center;
+  border-radius: 5px;
+  padding: 50px 35px 10px 35px;
+  margin: auto;
+  max-height: 100vh;
+  overflow-y: scroll;
+  animation-name: animated;
+  position: relative;
+  transform: translateY(-200%);
+  transition: 0.3s ease all;
+  direction: ltr;
+}
+
+i.close-form {
+  position: absolute;
+  z-index: 999999;
+  right: 4%;
+  top: 4%;
+  padding: 5px;
+  background: #f9f9f9;
+  color: var(--scnd-color);
+  cursor: pointer;
+  border-radius: 5px;
+}
+.close-form:hover{
+  color: var(--main-color);
+}
+
+@keyframes animated {
+  from {
+    transform: translateY(-20px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.animate_form {
+  transform: unset !important;
+}
+
+@media only screen and (max-width: 768px) {
+  .wrapper {
+    padding-right: 0 !important;
+    width: 100%;
+  }
+  .opened-menu .wrapper {
+    width: 100% !important;
+  }
+  .wrapper-body {
+    padding: 1.5rem .5rem 5rem .5rem;
+    width: 100% !important;
+  }
+  .pop-up_container {
+    padding: 0;
+  }
+}
