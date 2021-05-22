@@ -27,7 +27,7 @@ const io = require('./socket').init(http)
 
 
 
-const MONGODBURI = `mongodb+srv://abdelrhman:ingodwetrust@onlineshop-zsiuv.mongodb.net/carryit`;
+const MONGODBURI = `mongodb+srv://<username>:<password>@onlineshop-zsiuv.mongodb.net/<dbname>`;
 
 const store = new MongoDBStore({
   uri: MONGODBURI,
