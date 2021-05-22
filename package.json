@@ -7,8 +7,7 @@
     "node": "8.11.3"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "set NODE_ENV=prouction&& set MONGO_USER=abdelrhman&& set MONGO_PASSWORD=ingodwetrust&& set MONGO_DEFUALT_DATABASE=OnlineShop&& set PORT=3000&& set SENDGRID_API=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&& node app.js",
+    "start": "node app.js",
     "start-server": "node app.js",
     "start:dev": "nodemon app.js"
   },
