@@ -1,7 +1,7 @@
 {
-  "name": "nodejs-complete-guide",
+  "name": "socket-io-tracking-app",
   "version": "1.0.0",
-  "description": "Complete Node.js Guide",
+  "description": "Socket IO Tracking App",
   "main": "app.js",
   "engines": {
     "node": "8.11.3"
@@ -11,23 +11,20 @@
     "start-server": "node app.js",
     "start:dev": "nodemon app.js"
   },
-  "author": "Maximilian Schwarzmüller",
+  "author": "Abdelrahman Saad",
   "license": "ISC",
   "devDependencies": {
+    "artillery-engine-socketio-v3": "^1.1.2",
     "nodemon": "^1.19.4"
   },
   "dependencies": {
-    "@sendgrid/mail": "^6.4.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
     "compressing": "^1.4.0",
     "compression": "^1.7.4",
-    "connect-flash": "^0.1.1",
     "connect-mongodb-session": "^2.0.7",
     "cookie": "^0.4.1",
     "cors": "^2.8.5",
-    "csurf": "^1.9.0",
-    "ejs": "^2.6.1",
     "express": "^4.16.3",
     "express-handlebars": "^3.0.0",
     "express-session": "^1.15.6",
@@ -38,16 +35,9 @@
     "moment": "^2.29.1",
     "mongodb": "^3.1.6",
     "mongoose": "^5.4.11",
-    "mongoose-auto-increment": "^5.0.1",
     "multer": "^1.4.1",
-    "mysql2": "^1.6.1",
     "nodemailer": "^5.1.1",
-    "nodemailer-sendgrid-transport": "^0.2.0",
-    "pdfkit": "^0.9.0",
-    "pug": "^2.0.3",
-    "sequelize": "^5.0.0-beta.11",
-    "socket.io": "^2.2.0",
-    "stripe": "^7.10.0",
+    "socket.io": "^4.6.1",
     "uuid": "^3.3.2"
   }
 }
